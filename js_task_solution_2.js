@@ -94,3 +94,131 @@ let start = values.findIndex(el => typeof el === "boolean");
 let end = values.findLastIndex(el => typeof el === "boolean");
 let result = values.slice(start, end+1);
 console.log(result);
+
+// version 2
+
+function setStart(arr) {
+    if (typeof arr[0] === "boolean") {
+        return arr;
+    } else {
+        arr.shift(); // удалить первый элемент
+        return setStart(arr); // повторить действие
+    }
+}
+function setEnd(arr) {
+    if (typeof arr[arr.length - 1] === "boolean") {
+        return arr;
+    } else {
+        arr.pop(); // удалить последний элемент
+        return setEnd(arr); // повторить действие
+    }
+}
+
+values = setStart(values);
+values = setEnd(values);
+console.log(values);
+
+/* 2.6 В программе задана переменная values, которая хранит в себе массив. Элементы массива являются числами. Определите, находятся ли в заданном массиве элементы, которые содержат четырехзначные числа. Результат выведите в консоль в виде булевого значения (true, если содержит, и false, если нет).
+"values" = [10,185,11200,980]
+"result" = false
+"values" = [143,5476,43,2]
+"result" = true
+"values" = [123,4,342,3]
+"result" = false
+"values" = [22,443,5432,23]
+"result" = true */
+
+function printBool(values) {
+    let status = false;
+    for (let index = 0; index < values.length; index++) {
+        if (values[index] > 999 && 10000 > values[index]){
+            status = true;
+        }
+    }
+    console.log(status);
+}
+printBool(values)
+
+/* 2.7 Необходимо доработать программу из задания 2.6
+В программе задана переменная values, которая хранит в себе массив. Элементы массива являются числами. Определите, находятся ли в заданном массиве элементы, которые содержат четырехзначные числа. Если такие значения встречаются, выведите индекс первого в консоль. В противном случае выведите сообщение "Искомый элемент не был найден". 
+"values" = [10,185,11200,980]
+"result" = "Искомый элемент не был найден"
+"values" = [143,5476,43,5476]
+"result" = 1
+"values" = [123,4,342,3]
+"result" = "Искомый элемент не был найден"
+"values" = [22,443,5432,23]
+"result" = 2 */
+
+let index = values.findIndex(el => (el + "").length === 4);
+console.log(index !== -1 ? index : "Искомый элемент не был найден");
+
+// version 2
+index = undefined;
+for (let i = 0; i <= values.length; i++) {
+    let length = (values[i] + "").length; // 456+"" => "456".length => 3
+    if (!index && index !== 0 && length === 4) {
+        index = i;
+    } 
+}
+console.log(index || index === 0 ? index : "Искомый элемент не был найден");
+
+/* 2.8 В программе задана переменная users, которая хранит в себе массив. Элементы данного массива являются объектами. Определите индекс элемента, значение свойства role которого содержит больше одного слова. Результат выведите в консоль разработчика.
+"users" = [{"login":"user1","role":"Admin"},{"login":"user2","role":"State user"},{"login":"user3","role":"Moderator"}]
+"result" = 1
+"users" = [{"login":"manager","role":"username"},{"login":"user","role":"guest"},{"login":"admin","role":"super user"}]
+"result" = 2
+"users" = [{"login":"manager","role":"user name"},{"login":"user","role":"guest"},{"login":"admin","role":"superuser"}]
+"result" = 0
+"users" = [{"login":"user","role":"new user"}]
+"result" = 0 */
+
+function printIndex(users) {
+    const indexval = 0;
+    for (let index = 0; index < users.length; index++) {
+        let amount = ((((users[index]).role).split(' ')).length);
+            if (amount > 1) {
+	            console.log(users.indexOf(users[index]));
+            }
+    }
+}
+printIndex(users)
+
+/* 2.9 В программе задана переменная array, которая хранит в себе двумерный массив. Его элементы — массивы, состоящие из чисел. Отсортируйте массив по количеству элементов вложенного массива по возрастанию. Результат выведите в консоль.
+"array" = [[1,2,3],[1,2],[1,2,3,4]]
+"result" = [[1,2],[1,2,3],[1,2,3,4]]
+"array" = [[4,3,2],[1],[]]
+"result" = [[],[1],[4,3,2]]
+"array" = [[1],[1],[1]]
+"result" = [[1],[1],[1]]
+"array" = [[1]]
+"result" = [[1]] */
+
+function printArray(array) {
+    const sortByTitle = (a, b) => {
+          if (a == b) return 0;
+          if (a < b) return -1;
+          if (a > b) return 1;
+    }
+    array.sort(sortByTitle);
+    console.log(array);
+}
+printArray(array)
+
+/* 2.10 В программе задана переменная randValues, которая хранит в себе массив. Его элементы могут являться как строковыми, так и числовыми значениями. Отсортируйте массив следующим образом:
+В начале массива должны быть все числовые значения по возрастанию
+В конце все строковые, упорядоченные по алфавиту
+Результат выведите в консоль.
+"randValues" = ["Банан",3,"Апельсин",2,"Вишня"]
+"result" = [2,3,"Апельсин","Банан","Вишня"]
+"randValues" = ["велосипед","самокат","ролики"]
+"result" = ["велосипед","ролики","самокат"]
+"randValues" = [34,4,23,-100,432]
+"result" = [-100,4,23,34,432]
+"randValues" = []
+"result" = [] */
+
+randValues.sort();
+randValues.sort((a,b) => a - b);
+console.log(randValues);
+
