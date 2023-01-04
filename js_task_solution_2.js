@@ -76,3 +76,21 @@ console.log(numbers)
 "tasks" = []
 "result" = [] */
 
+let titles = tasks.map (e => e.title);
+
+console.log(titles)
+
+/* 2.5 В программе задана переменная values, которая хранит массив со строковыми и булевыми значениями. На основе массива values сформируйте новый массив result, который является фрагментом values. Новый массив должен начинаться с первого вхождения булевого значения и заканчиваться последним вхождением булевого значения в массив values. Выведите получившийся массив в консоль.
+"values" = ["Строка",true,"Число","Объект","Не число",false,"Не объект"]
+"result" = [true,"Число","Объект","Не число",false]
+"values" = [true,"Число",false,"Не число",false,"Строка"]
+"result" = [true,"Число",false,"Не число",false]
+"values" = [true,"Число","Объект","Строка",false]
+"result" = [true,"Число","Объект","Строка",false]
+"values" = [true,false]
+"result" = [true,false] */
+
+let start = values.findIndex(el => typeof el === "boolean");
+let end = values.findLastIndex(el => typeof el === "boolean");
+let result = values.slice(start, end+1);
+console.log(result);
