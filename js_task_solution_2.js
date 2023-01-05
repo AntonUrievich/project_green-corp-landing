@@ -10,15 +10,15 @@
 
 function printArray(values) {
     for (let index = 0; index < values.length; index++) {
-          if (typeof values[index] != "boolean"){
-          continue
-      }
-      else {
-          values[index] = "Булевый тип";
-          break;
-      }
+        if (typeof values[index] != "boolean") {
+            continue
+        }
+        else {
+            values[index] = "Булевый тип";
+            break;
+        }
     }
-  console.log(values);
+    console.log(values);
 }
 printArray(values)
 
@@ -32,18 +32,18 @@ printArray(values)
 "partNumbers" = []
 "result" = []*/
 
-let regexp= /\d\d\D\D$/;
+let regexp = /\d\d\D\D$/;
 
 let newpn = [];
 values = partNumbers;
 
 function printArray(values) {
-  	for (let value of values) {
-    		if (regexp.test(value)) {
-			newpn.push(value);
-  		}
-	}
-	console.log(newpn);
+    for (let value of values) {
+        if (regexp.test(value)) {
+            newpn.push(value);
+        }
+    }
+    console.log(newpn);
 }
 
 printArray(values)
@@ -60,11 +60,11 @@ printArray(values)
 
 let numbers = layout.match(/\d+/g) || [];
 numbers = numbers.map(el => {
-  if (el % 2 === 0) {
-    return el ** 2;
-  } else {
-    return +el;
-  }
+    if (el % 2 === 0) {
+        return el ** 2;
+    } else {
+        return +el;
+    }
 })
 console.log(numbers)
 
@@ -76,7 +76,7 @@ console.log(numbers)
 "tasks" = []
 "result" = [] */
 
-let titles = tasks.map (e => e.title);
+let titles = tasks.map(e => e.title);
 
 console.log(titles)
 
@@ -92,7 +92,7 @@ console.log(titles)
 
 let start = values.findIndex(el => typeof el === "boolean");
 let end = values.findLastIndex(el => typeof el === "boolean");
-let result = values.slice(start, end+1);
+let result = values.slice(start, end + 1);
 console.log(result);
 
 // version 2
@@ -131,7 +131,7 @@ console.log(values);
 function printBool(values) {
     let status = false;
     for (let index = 0; index < values.length; index++) {
-        if (values[index] > 999 && 10000 > values[index]){
+        if (values[index] > 999 && 10000 > values[index]) {
             status = true;
         }
     }
@@ -159,7 +159,7 @@ for (let i = 0; i <= values.length; i++) {
     let length = (values[i] + "").length; // 456+"" => "456".length => 3
     if (!index && index !== 0 && length === 4) {
         index = i;
-    } 
+    }
 }
 console.log(index || index === 0 ? index : "Искомый элемент не был найден");
 
@@ -177,9 +177,9 @@ function printIndex(users) {
     const indexval = 0;
     for (let index = 0; index < users.length; index++) {
         let amount = ((((users[index]).role).split(' ')).length);
-            if (amount > 1) {
-	            console.log(users.indexOf(users[index]));
-            }
+        if (amount > 1) {
+            console.log(users.indexOf(users[index]));
+        }
     }
 }
 printIndex(users)
@@ -196,9 +196,9 @@ printIndex(users)
 
 function printArray(array) {
     const sortByTitle = (a, b) => {
-          if (a == b) return 0;
-          if (a < b) return -1;
-          if (a > b) return 1;
+        if (a == b) return 0;
+        if (a < b) return -1;
+        if (a > b) return 1;
     }
     array.sort(sortByTitle);
     console.log(array);
@@ -219,7 +219,7 @@ printArray(array)
 "result" = [] */
 
 randValues.sort();
-randValues.sort((a,b) => a - b);
+randValues.sort((a, b) => a - b);
 console.log(randValues);
 
 /* 2.11 В программе задана переменная words, которая хранит в себе массив строковых значений. Напишите скрипт, который считает количество палиндромов и непалиндромов в массиве words. Результат должен представлять собой массив из двух элементов, где первое значение — количество палиндромов, а второе — непалиндромов.
@@ -248,7 +248,7 @@ console.log(result);
 "dates" = "01.01.0001"
 "result" = ["01/01/0001"] */
 
-dates = dates.split(" ").map(el => el.replace(/\./g,"/"));
+dates = dates.split(" ").map(el => el.replace(/\./g, "/"));
 console.log(dates);
 
 /* 2.13 В программе задана переменная tickets, которая хранит в себе строковое значение. В этой переменной указаны номера билетов на поезд (после слова Train) и на самолет (после слова Airplane). Необходимо написать скрипт, который на основе строки из переменной tickets формирует объект. Он должен хранить в себе два ключа (train, airplane), а в качестве значений — массивы с номерами билетов для поезда и самолета соответственно.
@@ -291,7 +291,7 @@ let cnt = numbers.reduce((acc, el) => {
         acc.sum += el;
     }
     return acc;
-}, {cnt: 0, sum: 0})
+}, { cnt: 0, sum: 0 })
 console.log(cnt.cnt);
 
 /* 2.15 В программе задана переменная values, которая хранит массив из строк. Определите математическую сумму всех элементов, которые при преобразовании в число не вернут значение NaN. Результат выведите в консоль.
@@ -373,7 +373,7 @@ console.log([...keys, ...values]);
 "author" = {}
 "result" = {} */
 
-console.log({...article, ...author});
+console.log({ ...article, ...author });
 
 /* 3.4 В программе задан массив array. Напишите функцию count(), которая считает количество элементов массива array и выводит в консоль сообщение, как в примере.
 "array" = [true,4,"word","10n"]
@@ -401,7 +401,7 @@ function count() {
 
 let str = "hireDate";
 
-employee.sort((a,b) => {
+employee.sort((a, b) => {
     // console.log(a,b);
     if (b[0] !== str) {
         return 1
@@ -417,3 +417,60 @@ if (typeof employee[0] === "object") {
 employee.push(["jobName", "IT PROG"])
 console.log(employee);
 
+/* 3.6 В программе задан двумерный массив array. Создайте и вызовите функцию countString(), которая считает количество значений массива array, у которых второй элемент является строкой. Функция countString() должна выводить в консоль сообщение, как в примере.
+"array" = [["boolean",true],["number",4],["string","word"],["object",{}]]
+"result" = "Количество строковых элементов в именованном массиве: 1"
+"array" = [["boolean",true],["number",4],["object",{}]]
+"result" = "Количество строковых элементов в именованном массиве: 0"
+"array" = []
+"result" = "Количество строковых элементов в именованном массиве: 0"
+"array" = [["string","word"],["string","word"],["string","word"]]
+"result" = "Количество строковых элементов в именованном массиве: 3" */
+
+const countString = function (a) {
+    let cnt = 0;
+    for (let val of a) {
+        if (typeof val[1] === "string") {
+            cnt++;
+        }
+    }
+    console.log(`Количество строковых элементов в именованном массиве: ${cnt}`)
+}
+countString(array);
+
+/* 4.1 В программе объявлены объекты pet_1 и pet_2. Напишите функцию getName() и присвойте ее объектам pet_1 и pet_2 в качестве метода. При вызове метода getName() он должен вернуть имя и возраст питомца через пробел. Решить задачу необходимо с использованием this.
+"pet_1" = {"name":"Шарик","age":10}
+"pet_2" = {"name":"Жучка","age":5}
+"result" = "Шарик 10; Жучка 5"
+"pet_1" = {"name":"Мурка","age":1}
+"pet_2" = {"name":"Одиссей","age":7}
+"result" = "Мурка 1; Одиссей 7"
+"pet_1" = {"name":"Оскар","age":15}
+"pet_2" = {"name":"Мопс","age":46}
+"result" = "Оскар 15; Мопс 46" */
+
+function getName() {
+    return `${this.name} ${this.age}`
+}
+pet_1.getName = getName;
+pet_2.getName = getName;
+
+/* 4.2 В программе объявлен объект input и функция sayHi(), которая выводит в консоль сообщение из примера. Используя метод присвоения контекста, свяжите контекст объекта input с функцией sayHi() и вызовите функцию sayHi().
+"input" = {"id":1,"value":"Добрый вечер","firstName":"Григорий","lastName":"Стрельников"}
+"sayHi" = function(){ console.log(`${this.value}, ${this.firstName} ${this.lastName}!`)}
+"result" = "Добрый вечер, Григорий Стрельников!"
+"input" = {"a":12,"b":43}
+"sayHi" = function(){console.log(this.a*this.b)}
+"result" = 516 */
+
+sayHi.call(input);
+
+/* 4.3 В программе объявлен объект pet со свойствами name и breed и функция getDescription(), которая выводит эту информацию, используя this. Привяжите к функции getDescription() контекст pet и присвойте получившуюся функцию переменной getDescription.
+"pet" = {"name":"Диксон","breed":"Немецкая овчарка"}
+"getDescription" = function () {console.log("Имя питомца: " + this.name + ", Порода: " + this.breed)}
+"result" = "Имя питомца: Диксон, Порода: Немецкая овчарка"
+"pet" = {"name":"Локи","breed":"Лайка"}
+"getDescription" = function () {console.log("Имя питомца: " + this.name + ", Порода: " + this.breed)}
+"result" = "Имя питомца: Локи, Порода: Лайка" */
+
+getDescription = getDescription.bind(pet);
