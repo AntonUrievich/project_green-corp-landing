@@ -331,3 +331,89 @@ function intersection(array_1, array_2) {
     return result;
 }
 console.log(intersection(array_1, array_2));
+
+/* 3.1 В программе объявлена переменная car, которая хранит в себе объект, у которого есть как минимум одно свойство — engine. Удалите из объекта car свойство engine и результат выведите в консоль.
+"car" = {"model":"Audi","color":"white","weight":1850,"engine":"170 hp"}
+"result" = {"model":"Audi","color":"white","weight":1850}
+"car" = {"engine":"170 hp"}
+"result" = {}
+"car" = {"model":"Audi","engine":"170 hp"}
+"result" = {"model":"Audi"}
+"car" = {"engine":"170 hp","model":"BMW"}
+"result" = {"model":"BMW"} */
+
+delete car.engine;
+console.log(car);
+
+/* 3.2 В программе объявлена переменная goods, которая хранит объект со свойствами, описывающими товар. Сформируйте массив, который содержит в начале все названия свойств объекта, а потом все их значения. Результат выведите в консоль.
+"goods" = {"title":"Самокат","price":6000,"good_id":1}
+"result" = ["title","price","good_id","Самокат",6000,1]
+"goods" = {"id":1,"title":"Покушать","status":"complete"}
+"result" = ["id","title","status",1,"Покушать","complete"]
+"goods" = {}
+"result" = []
+"goods" = {"done":true}
+"result" = ["done",true] */
+
+let keys = Object.keys(goods);
+values = Object.values(goods);
+console.log([...keys, ...values]);
+
+/* 3.3 В программе заданы две переменные article и author, которые содержат объекты. Объект article содержит информацию о статье, а author — об авторе. Сформируйте новый объект, который содержит свойства объектов article и author. Результат выведите в консоль.
+"article" = {"title":"Загадки дачного огурца","text":"Огурец не перестает удивлять своими выходками."}
+"author" = {"name":"Ричард М.В.","age":43}
+"result" = {"title":"Загадки дачного огурца","text":"Огурец не перестает удивлять своими выходками.","name":"Ричард М.В.","age":43}
+"article" = {}
+"author" = {"name":"Ричард М.В.","age":43}
+"result" = {"name":"Ричард М.В.","age":43}
+"article" = {"title":"Загадки дачного огурца","text":"Огурец не перестает удивлять своими выходками."}
+"author" = {}
+"result" = {"title":"Загадки дачного огурца","text":"Огурец не перестает удивлять своими выходками."}
+"article" = {}
+"author" = {}
+"result" = {} */
+
+console.log({...article, ...author});
+
+/* 3.4 В программе задан массив array. Напишите функцию count(), которая считает количество элементов массива array и выводит в консоль сообщение, как в примере.
+"array" = [true,4,"word","10n"]
+"result" = "Количество элементов в массиве: 4"
+"array" = [100]
+"result" = "Количество элементов в массиве: 1"
+"array" = [true,false]
+"result" = "Количество элементов в массиве: 2"
+"array" = []
+"result" = "Количество элементов в массиве: 0" */
+
+function count() {
+    console.log(`Количество элементов в массиве: ${array.length}`);
+}
+
+/* 3.5 В программе задан двумерный массив employee. Удалите у данного массива значение, у которого первый элемент hireDate, и добавьте новое значение ["jobName", "IT PROG"] в конец массива. Результат выведите в консоль.
+"employee" = [["firstName","Ivan"],["lastName","Ivanov"],["hireDate","21.10.2015"]]
+"result" = [["firstName","Ivan"],["lastName","Ivanov"],["jobName","IT PROG"]]
+"employee" = [["firstName","Ivan"],["lastName","Ivanov"]]
+"result" = [["firstName","Ivan"],["lastName","Ivanov"],["jobName","IT PROG"]]
+"employee" = [["firstName","Ivan"],["hireDate","21.10.2015"],["hireDate","21.10.2015"]]
+"result" = [["firstName","Ivan"],["jobName","IT PROG"]]
+"employee" = []
+"result" = [["jobName","IT PROG"]] */
+
+let str = "hireDate";
+
+employee.sort((a,b) => {
+    // console.log(a,b);
+    if (b[0] !== str) {
+        return 1
+    } else if (a[0] !== str) {
+        return -1;
+    }
+})
+if (typeof employee[0] === "object") {
+    while (employee[employee.length - 1][0] === str) {
+        employee.pop();
+    }
+}
+employee.push(["jobName", "IT PROG"])
+console.log(employee);
+
