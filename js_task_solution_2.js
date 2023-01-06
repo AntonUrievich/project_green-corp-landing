@@ -540,3 +540,107 @@ for (let k in employees) {
 str = str.slice(0, str.length - 2);
 console.log(str);
 
+/* 5.3 В программе объявлены переменные firstName и lastName. Создайте объект user со свойствами firstName и lastName и добавьте getter и setter fullName. Сеттер fullName должен принимать имя и фамилию пользователя через пробел, разделять и присваивать свойствам firstName и lastName соответственно. Геттер fullName должен формировать строку, состоящую из имени и фамилии через пробел.
+"firstName" = "Всеволод"
+"lastName" = "Старозубов"
+"result" = "Всеволод Старозубов"
+"firstName" = "Игорь"
+"lastName" = "Катамаранов"
+"result" = "Игорь Катамаранов"
+"firstName" = "Ричард"
+"lastName" = "Сапогов"
+"result" = "Ричард Сапогов"
+"firstName" = "Захар"
+"lastName" = "Стрельников"
+"result" = "Захар Стрельников" */
+
+class Person {
+    constructor(a,b) {
+        this.firstName = a;
+        this.lastName = b;
+    }
+    get fullName () {
+        return `${this.firstName} ${this.lastName}`;
+    }
+    set fullName (str) {
+        let data = str.split(" ");
+        this.firstName = data[0];
+        this.lastName = data[1];
+    }
+}
+let user = new Person(firstName, lastName);
+console.log(user);
+console.log(user.fullName);
+
+/* 5.4 В программе объявлены переменные name и phone, которые хранят строки. В name указано название заведения, а в phone — его номер телефона. Создайте класс Delivery со свойствами name и phone. Помимо описанных свойств, добавьте свойство validPhone, которое проверяет значение свойства phone на вхождение знака + в начале строки. Если знак отсутствует, свойство validPhone должно принять булевое значение false, в противном случае — true. Создайте экземпляр класса Delivery и в качестве аргументов конструктора укажите значения переменных name и phone. Получившийся экземпляр класса запишите в переменную deliveryName.
+name = 'Pizza'
+phone = '81234567890'
+result = false
+name = 'Sushi'
+phone = '+37443234654'
+result = true
+name = 'burgers'
+phone = ''
+result = false */
+
+class Delivery {
+    constructor(n, p) {
+        this.name = n;
+        this.phone = p;
+        this.validPhone = /^\+/.test(p)
+    }
+}
+let deliveryName = new Delivery(name, phone);
+
+/* 5.5 В программе создан класс Permissions, свойства которого описывают права пользователей на редактирование статей на сайте. Создайте новый класс User, который наследуется от класса Permissions. Дополнительно в классе User добавьте свойство name, значение которого класс принимает в качестве аргумента конструктора.
+name = Анатолий
+result = Анатолий false true false false
+name = Светлана
+result = Светлана false true false false
+name = Константин
+result = Константин false true false false
+name = Владимир
+result = Владимир false true false false */
+
+class Permissions {
+    constructor() {
+        this.create = false
+        this.read = true
+        this.update = false
+        this.remove = false
+    }
+}
+class User extends Permissions {
+    constructor(n) {
+        super();
+        this.name = n;
+    }
+}
+
+/* 5.6 В программе задан массив array, элементы которого имеют численное значение, и переменная num, которая является числом. Реализуйте функцию queue(num, ...array), которая принимает в качестве аргументов множество значений списка array и значение переменной num. Функция должна найти минимальную сумму num элементов из значений массива array. Ответ выведите в консоль.
+array = [2,4,7,8,1]
+num = 2
+result = 3
+array = [-12,-32,-43,-3,-1]
+num = 3
+result = -87
+array = [2,4,7,8,1]
+num = 0
+result = 0
+array = [2,3,10,11]
+num = 2
+result = 5 */
+
+function queue() {
+    let n = arguments[0];
+    let arr = [...arguments];
+    arr.shift();
+    arr.sort((a,b) => a - b);
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+console.log(queue(num, ...array));
