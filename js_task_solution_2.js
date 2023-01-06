@@ -474,3 +474,69 @@ sayHi.call(input);
 "result" = "Имя питомца: Локи, Порода: Лайка" */
 
 getDescription = getDescription.bind(pet);
+
+/* 4.4 В программе объявлен объект props, у которого задан набор свойств. Объявите функцию getValue(), которая выводит в консоль строку со всеми свойствами и их значениями (без методов). Привяжите объект props в качестве контекста функции getValue() и присвойте получившуюся функцию переменной getValue.
+props = {name:'Анатолий',age:29,sayHi:()=>'привет'}
+result = 'Значения свойств объекта props (name: Анатолий, age: 29)'
+props = {firstName:'Петя',lastName:'Иванов'}
+result = 'Значения свойств объекта props (firstName: Петя, lastName: Иванов)'
+props = {a:()=>12,b:()=>15}
+result = 'Значения свойств объекта props ()'
+props = {}
+result = 'Значения свойств объекта props ()' */
+
+function getValue() {
+    let str = "";
+    // console.log(Object.keys(this))
+    // console.log(Object.values(this))
+    for (let k in this) {
+        if (typeof this[k] !== "function") {
+            str += `${k}: ${this[k]}, `;
+        }
+    }
+    str = str.slice(0, str.length - 2);
+    console.log(`Значения свойств объекта props (${str})`);
+}
+
+getValue = getValue.call(props);
+
+/* 4.5 В программе объявлен объект hero, свойства которого описывают информацию о герое. В объекте в том числе определен метод getPosition, который возвращает позицию героя в игре. Определите, почему вызов getPosition работает некорректно. Исправьте эту ошибку.
+props = {nick:'FirstHero',position:'Лагерь',getPosition:()=>console.log(\Позиция героя: \ + this.position)}
+result = 'Позиция героя: Лагерь' */
+
+hero = { 
+    nick: "FirstHero", 
+    position: "Лагерь",
+    getPosition: ()=>console.log("Позиция героя: " + hero.position)
+}
+
+/* 5.1 В программе объявлена переменная order, которая хранит объект. Объявите переменную descriptor, которая должна содержать значения всех атрибутов ключа totalPrice объекта orders в виде объекта. Результат выведите в консоль.
+"order" = {"productName":"Велосипед","costomerName":"Саша","salesName":"Петя","totalPrice":15000}
+"result" = {"value":15000,"writable":true,"enumerable":true,"configurable":true}
+"order" = {"totalPrice":0}
+"result" = {"value":0,"writable":true,"enumerable":true,"configurable":true}
+"order" = {"productName":"Велосипед"}
+"result" = undefined */
+
+let descriptor = Object.getOwnPropertyDescriptor(order, "totalPrice");
+console.log(descriptor);
+
+/* 5.2 В программе задан объект employees, который содержит ряд свойств и методов. Сформируйте строку с именами всех свойств через запятую и пробел (, ) и выведите в консоль. Имена методов добавляться не должны.
+employees = {firstName:'Петя',lastName:'Иванов',ratePerDay:2500,workingDays:5,getSalary:getSalary() { console.log(employees.ratePerDay * employees.workingDays )}}
+result = 'firstName, lastName, ratePerDay, workingDays'
+employees = {firstName:'Петя',lastName:'Иванов'}
+result = 'firstName, lastName'
+employees = {a:()=>12,b:()=>15}
+result = ''
+employees = {}
+result = '' */
+
+let str = "";
+for (let k in employees) {
+    if (typeof employees[k] !== "function") {
+        str += `${k}, `;
+    }
+}
+str = str.slice(0, str.length - 2);
+console.log(str);
+
