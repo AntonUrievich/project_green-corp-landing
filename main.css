@@ -477,3 +477,15 @@ footer {
         flex-direction: column;
     }
 }
+
+.about {
+    position: relative;
+}
+
+.orb-canvas {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+}
+
