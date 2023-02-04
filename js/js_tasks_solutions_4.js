@@ -1,6 +1,8 @@
 /* 1.1 Напишите скрипт, который определяет тип тега с классом secret и выводит его в консоль.
 Пример <div class="secret">...</div> Результат div */
 
+//console.log(document.querySelector(".secret").nodeName.toLowerCase())
+//console.log(document.querySelector(".secret").localName)
 console.log(document.querySelector(".secret").tagName.toLowerCase())
 
 /* 1.2 Напишите скрипт, который определяет тип тега с идентификатором elem и выводит его в консоль.
@@ -108,6 +110,10 @@ let result = 0;
 let elems = document.getElementsByClassName(".numeric");
 elems.forEach(elem => result += +elem.innerText); */
 
+let result = 0;
+let elems = document.querySelectorAll(".numeric");
+elems.forEach(elem => result += +elem.innerText);
+
 /* 1.11 В HTML-документе задан тег <ul> c классом cars. Внутри этого тега есть несколько тегов <li>. Реализуйте скрипт, который считывает содержимое этих элементов <li>, формирует из них массив и сохраняет в переменной cars.
 Пример заданного HTML-документа:
 <ul id="cars">
@@ -116,3 +122,10 @@ elems.forEach(elem => result += +elem.innerText); */
 </ul>
 Пример результата: ["Tesla',"Opel"] */
 
+let content = document.querySelector('.cars');
+let car = content.children;
+const cars = [];
+for (let i = 0; i < car.length; i++) {
+    cars.push(car[i].textContent)
+}
+console.log(cars)
