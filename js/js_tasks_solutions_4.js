@@ -35,4 +35,84 @@ for (let i = secret.length - 1; i > secret.length - 2; i--) {
 let card = document.querySelector(".price");
 card.innerText= card.textContent*2
 
-/* 1.6  */
+/* 1.6 В HTML-документе есть тег <p> c классом links. Внутри этого элемента указана просто текстовая ссылка без тега <a>. Напишите скрипт, который заменит этот текст на тег <a>, а в качестве содержимого тега <a> укажет изначальный текст.
+Пример заданного HTML-документа:
+<p class="links">google.com</p>
+Пример результата:
+<p class="links"><a>google.com</a></p> */
+
+let card = document.querySelector(".links");
+card.innerHTML = "<a>"+card.innerHTML+"</a>"
+
+/* 1.7 В HTML-документе есть тег с классом content, внутри него есть тег <p>. Напишите скрипт, который заменит этот тег <p> на тег <b>, сохранив текст внутри этого тега.
+Пример заданного HTML-документа:
+<p class="content">
+<p>Внутренний текст</p>
+</p>
+Пример результата
+<p class="content">
+<b>Внутренний текст</b>
+</p> */
+
+let card = document.querySelector(".content");
+let caption = card.querySelector("p");
+card.innerHTML = "<b>"+caption.innerText+"</b>";
+console.log(card.innerHTML);
+
+/* 1.8 В HTML-документе заданы элементы с числовым значением с классом price. Напишите скрипт, который считает общую сумму значений всех элементов с классом price и выводит в консоль.
+Пример заданного HTML-документа:
+<p class='price'>100</p>
+<p class='price'>200</p>
+Пример результата: 300 */
+
+let result = 0;
+let price = document.getElementsByClassName("price");
+
+for (let i = 0; i < price.length; i++) {
+    temp=(Number(price[i].textContent));
+    result +=temp;
+}
+
+console.log(result);
+
+/* 1.9 В HTML-документе заданы теги с числовым значением с классом numeric. Напишите скрипт, который оборачивает в тег <b> все значения тега с классом numeric, которые меньше нуля.
+Пример заданного HTML-документа:
+<p class="numeric">62</p>
+<p class="numeric">-12</p>
+<p class="numeric">16</p>
+Пример результата:
+<p class="numeric">62</p>
+<p class="numeric"><b>-12</b></p>
+<p class="numeric">16</p> */
+
+let nums = document.getElementsByClassName("numeric");
+
+for (let i = 0; i < nums.length; i++) {
+    let temp = (Number(nums[i].textContent));
+    if (temp >= 0){
+        continue;
+    }
+    else {
+         nums[i].innerHTML = "<b>"+nums[i].innerText+"</b>";
+    }
+}
+
+/* 1.10 Исправьте скрипт таким образом, чтобы в результате его работы в переменной result была сумма значений тегов с классом numeric.
+Пример заданного HTML-документа:
+<p class="numeric">62</p>
+<p class="numeric">-12</p>
+<p class="numeric">16</p>
+Пример результата: result = 66 
+
+let result = 0;
+let elems = document.getElementsByClassName(".numeric");
+elems.forEach(elem => result += +elem.innerText); */
+
+/* 1.11 В HTML-документе задан тег <ul> c классом cars. Внутри этого тега есть несколько тегов <li>. Реализуйте скрипт, который считывает содержимое этих элементов <li>, формирует из них массив и сохраняет в переменной cars.
+Пример заданного HTML-документа:
+<ul id="cars">
+<li>Tesla</li>
+<li>Opel</li>
+</ul>
+Пример результата: ["Tesla',"Opel"] */
+
