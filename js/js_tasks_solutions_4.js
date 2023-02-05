@@ -128,4 +128,60 @@ const cars = [];
 for (let i = 0; i < car.length; i++) {
     cars.push(car[i].textContent)
 }
-console.log(cars)
+console.log(cars) 
+
+/* 2.1 Напишите скрипт, который создает новый элемент <p> в переменной new_element и добавляет его в тег с идентификатором root. Созданный тег <p> должен содержать в себе фразу Ура! Мой скрипт отработал верно! */
+
+let new_element = document.createElement("p");
+new_element.innerHTML = "Ура! Мой скрипт отработал верно!";
+let root = document.getElementById("root")
+root.appendChild(new_element);
+
+/* 2.2 В HTML-документе есть тег <p> c идентификатором title. Напишите скрипт, который создает новый элемент <h2> в переменной new_element с текстовым содержимым Сегодня солнечно, минус 15 и добавляет новый элемент сразу после тега с идентификатором title. */
+
+let new_element = document.createElement("h2");
+new_element.innerText = "Сегодня солнечно, минус 15";
+
+let card = document.querySelector(".card");
+let content = card.querySelector(".content");
+
+content.appendChild(new_element);
+console.log(content.innerHTML);
+
+/* 2.3 В HTML-документе задан тег <ul> c элементами <li> внутри. Напишите скрипт, который создает новый элемент <li> с текстовым содержимым Велосипед в переменной new_element и добавляет его в начало списка <ul>. */
+
+let new_element = document.createElement("li");
+new_element.innerText = "Велосипед";
+
+let card = document.querySelector(".card");
+let content = card.querySelector(".content");
+let caption = content.querySelector("ul");
+let cap = caption.querySelector("li");
+
+caption.insertBefore(new_element, cap);
+
+/* 2.4 В HTML-документе есть несколько тегов <div>. Напишите скрипт, который всем тегам <div> добавляет класс adds. */
+
+let card = document.querySelector(".card");
+
+let content = card.getElementsByTagName('div')
+for (let i = 0; i < content.length; i++) {
+  content[i].className="adds";
+//  console.log(content[i].className);
+}
+
+/* 2.5 В HTML-документе есть несколько тегов <p>. Напишите скрипт, который присваивает каждому тегу идентификатор — от значения p_1 и до p_<n>. Тут n — количество параграфов. */
+
+let card = document.querySelector(".card");
+let ident=1;
+
+let content = card.getElementsByTagName('p')
+
+for (let i = 0; i < content.length; i++) {
+    content[i].id="p_"+ident;
+    ident +=1;
+    console.log(content[i].id);
+}
+
+/* 2.6  */
+
