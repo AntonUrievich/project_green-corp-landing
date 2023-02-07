@@ -183,5 +183,97 @@ for (let i = 0; i < content.length; i++) {
     console.log(content[i].id);
 }
 
-/* 2.6  */
+/* 2.6 В HTML-документе заданы теги <p>. Напишите скрипт, который удаляет теги, внутри которых хранится текстовое значение Delete.
+Пример заданного HTML-документа:
+<p>Delete<p>
+<p>Абзац<p>
+<p>Delete<p>
+Пример результата:
+<p>Абзац<p> */
 
+let card = document.querySelector(".card");
+let content = card.getElementsByTagName('p')
+
+for (let i = 0; i < content.length; i++) {
+    if (content[i].textContent == "Delete"){
+        content[i].remove();
+    }
+}
+
+let bodyp = document.getElementsByTagName("p")
+for (let i = 0; i < bodyp.length; i++) {
+    if (bodyp[i].textContent == "Delete"){
+        bodyp[i].remove();
+    }
+}
+
+/* 2.7 В скрипте объявлен массив values, который состоит из чисел. В HTML-документе есть множество тегов <p> с классом elems. Необходимо дописать скрипт так, чтобы он удалил все теги <p> с классом elems, значение которых входит в массив values.
+Пример значений:
+values = [10, 50, 100]
+Пример заданного HTML-документа:
+<p class=”elems”>50</p>
+<p class=”elems”>20</p>
+<p class=”elems”>10</p>
+Пример результата в HTML-документе:
+<p class=”elems”>20</p> */
+
+const values = [15, 20, 25];
+
+let card = document.querySelector(".card");
+let content = card.getElementsByClassName("elems")
+
+for (let i = 0; i < content.length; i++) {
+    console.log(values.includes(Number(content[i].textContent)))
+}
+if ((values.includes(Number(content[i].textContent))) != "false") {
+    card.removeChild(content[i]);
+}
+
+/* 2.8 В HTML-документе заданы два <div> тега с идентификаторами div1 и div2. Напишите скрипт, который позволит перенести содержимое тега с идентификатором div1 в конец тега с идентификатором div2.
+Пример заданного HTML-документа:
+<div id=”div1”><h2>Text</h2><span>subtext</span></div>
+<div id=”div2”><h1>Title</h1></div>
+Пример результата в HTML-документе:
+<div id=”div1”></div>
+<div id=”div2”><h1>Title</h1><h2>Text</h2><span>subtext</span></div> */
+
+let div_1 = document.getElementById('div1')
+let div_2 = document.getElementById('div2');
+let p = div_1.firstElementChild;
+let p2 = div_1.lastElementChild;
+div_2.append(p)
+div_2.append(p2)
+
+/* 2.9 В HTML-документе есть тег <ul> c идентификатором first. Внутри этого тега есть теги <li>. Напишите скрипт, который создает новый тег <li> в переменной new_element и добавляет в элемент <ul> с идентификатором first. После добавления нового элемента выведите в консоль общее количество тегов <li> в теге <ul> с идентификатором first.
+Пример заданного HTML-документа:
+<ul id="first">
+<li>1</li>
+<li>2</li>
+<li>3</li>
+</ul> */
+
+el = document.querySelector("#first");
+new_element = document.createElement("li");
+el.appendChild(new_element);
+console.log(el.children.length);
+
+/* 2.10 В скрипте объявлена переменная values, которая содержит массив из строк. В HTML-верстке есть два тега <div> с классами div1 и div2. Допишите скрипт так, чтобы все теги <p> из тега с идентификатором div1, значение которого встречается в списке values, переместились в тег с идентификатором div2.
+Пример значений:
+values = ["велосипед", "ролики", "лыжи"]
+Пример заданного HTML-документа:
+<div id="div1"><p>велосипед</p><p>лыжи</p><p>скейт</p></div>
+<div id="div2"></div>
+Пример результата в HTML-документе:
+<div id="div1"><p>скейт</p></div>
+<div id="div2"><p>велосипед</p><p>лыжи</p></div> */
+
+values = ["велосипед", "ролики", "лыжи"];
+let d1 = document.querySelector("#div1"),
+    d2 = document.querySelector("#div2");
+
+els = Array.from(d1.children);
+els.forEach(el => {
+    if (values.includes(el.innerText)) {
+        d2.append(el);
+    }
+})
