@@ -277,3 +277,64 @@ els.forEach(el => {
         d2.append(el);
     }
 })
+
+/* 2.11 В скрипте объявлена переменная task, в которой хранится список из строк. В HTML-верстке есть тег <div> с идентификатором root. Допишите скрипт так, чтобы на основе значений списка сформировались теги <p> и добавились в элемент с идентификатором root.
+Пример значений:
+tasks = ["Проверить документы", "Отправить начальству", "Организовать собрание"]
+Пример результата в HTML-документе:
+<div>
+<p>Проверить документы</p><p>Отправить начальству</p><p>Организовать собрание</p>
+</div> */
+
+const tasks = ["Проверить документы", "Отправить начальству", "Организовать собрание"];
+
+const tags = tasks.map(t=>{
+    const elem = document.createElement('p');
+    elem.innerText = t;
+    return elem
+});
+
+document.querySelector('#root').append(...tags);
+
+/* 2.12 Напишите программу, которая считает количество <div>-, <p>- и <h2>-тегов и записывает его в объект tags, как в примере. Выведите сформированный объект в консоль.
+Пример заданного HTML-документа:
+<p>100</p>
+<p>200</p>
+<div>50</div>
+<h2></h2>
+<h2>40</h2>
+Пример результата:
+{"div": 1, "p": 2, "h2": 2} */
+
+class Obj {
+    constructor(div, p, h2) {
+       this.div = div,
+       this.p = p,
+       this.h2 = h2
+    }
+}
+let div = document.querySelectorAll('div');
+let p = document.querySelectorAll('p');
+let h2 = document.querySelectorAll('h2')
+let res = new Obj(div.length, p.length, h2.length);
+console.log(res)
+
+/* 2.13 В HTML-документе есть тег <ul> с идентификатором tasks, и внутри него есть несколько тегов <li> с текстом. Напишите скрипт, который позволяет отсортировать элементы <li> в теге <ul> по длине содержимого.
+Пример заданного HTML-документа:
+<ul id="tasks">
+<li>Велосипед</li><li>Скейт</li><li>Самокат</li>
+</ul>
+Пример результата:
+<ul id="tasks">
+<li>Скейт</li><li>Самокат</li><li>Велосипед</li>
+</ul> */
+
+let list = [...document.querySelectorAll("#tasks>li")];
+el = document.querySelector("#tasks");
+
+list.sort((a,b) => a.innerText.length - b.innerText.length);
+el.innerHTML = "";
+// list.forEach(li => {
+//     el.append(li);
+// })
+el.append(...list);
