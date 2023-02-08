@@ -338,3 +338,64 @@ el.innerHTML = "";
 //     el.append(li);
 // })
 el.append(...list);
+
+/* 3.1 В HTML-документе задан тег <div> с идентификатором div_elem. Напишите скрипт, который добавит в стиль данного элемента ширину и высоту по 100 пикселей. */
+
+let card = document.querySelector(".card");
+let items = card.querySelectorAll("#div_elem");
+
+
+for (let i = 0; i < items.length; i++) {
+    items[i].style.width= "100px";
+    items[i].style.height= "100px";
+}
+
+/* 3.2 В HTML-документе задан тег <p> с идентификатором rainbow. Напишите скрипт, который указывает в стиле синий цвет текста (#2980b9). */
+
+let card = document.querySelector(".card");
+let items = card.querySelectorAll("#rainbow");
+console.log(card.textContent);
+
+for (let i = 0; i < items.length; i++) {
+    items[i].style.color= "#2980b9";
+}
+
+/* 3.3 В HTML-документе есть тег <label> и тег <input> с идентификатором target. Необходимо написать скрипт, который присваивает тегу <label> атрибут, позволяющий привязать его к тегу <input>. В результате при клике мышью на <label> тег <input> должен стать активным (в него должен переместиться курсор) */
+
+el = document.querySelector("label");
+// el.setAttribute("for", "target");
+el.htmlFor = "target";
+
+/* 3.4 В HTML-документе есть тег <p> c идентификатором rainbow. Внутри этого тега указано число. Реализуйте скрипт, который делает преобразование в зависимости от следующих условий:
+Если числовое значение находится в диапазоне от 1 до 9 включительно, должно меняться значение атрибута style. Цвет текста — на красный (#c0392b).
+Если числовое значение находится в диапазоне от 10 до 20 включительно — на коричневый (#e17055).
+В ином случае — на желтый (#fdcb6e). */
+
+const rb = document.querySelector("#rainbow");
+const colors = ["#c0392b", "#e17055", "#fdcb6e"];
+const txt = +rb.innerText;
+switch (true) {
+    case txt >= 1 && txt < 10:
+        rb.style.color = colors[0];
+        break;
+    case txt >= 10 && txt <= 20: 
+        rb.style.color = colors[1];
+        break;
+    default: 
+        rb.style.color = colors[2];
+}
+
+/* 3.5 В HTML-документе есть тег <div> с идентификатором photo. Внутри этого тега указана ссылка на картинку. Необходимо написать скрипт, который:
+- заменит ссылку на тег <img> с этой картинкой
+- укажет размеры картинки в атрибуте style 100 на 100 пикселей */
+
+el = document.querySelector("#photo");
+let img = document.createElement("img");
+img.src = el.innerText;
+img.style.width = "100px";
+img.style.height = "100px";
+
+// el.innerHTML = "";
+// el.append(img);
+
+el.innerHTML = img.outerHTML;
