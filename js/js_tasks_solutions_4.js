@@ -423,3 +423,70 @@ countries.forEach(c => {
     opt.innerText = c;
     select.appendChild(opt);
 });
+
+/* 4.1 В HTML-документе задан тег <button> с идентификатором btn и тег <p> с идентификатором val. Напишите скрипт, который выводит в консоль содержимое тега <p> при клике на кнопку. */
+
+let card = document.querySelector(".card");
+
+
+function buttonClick() {
+    let val = card.querySelector("#val");
+    console.log(val.textContent)
+  }
+
+  const button = card.querySelector("#btn");
+  button.addEventListener("click", buttonClick);
+
+  /* 4.2 В HTML-документе задан тег <button> с идентификатором btn и тег <input> с идентификатором val. Напишите скрипт, который выводит в консоль значение тега <input> при клике на кнопку. */
+
+  let button = document.querySelector('#btn').addEventListener('click', function() {
+    let input = document.querySelector('#val');
+    console.log(input.getAttribute('value'))
+ });
+
+ /* 4.3 В HTML-документе задан тег <div> c идентификатором square. Он представляет собой синий квадрат. Напишите скрипт, который позволяет сделать <div> прозрачным (opacity: 0) при клике по нему. */
+
+ const box = document.querySelector("#square");
+box.onclick = function() {
+    this.style.opacity = +!+this.style.opacity;
+}
+
+/* 4.4 В HTML-документе есть тег <button> с идентификатором clicker. Напишите скрипт, который добавит обработку события клика на кнопку с идентификатором clicker. При нажатии на кнопку число внутри тега <button> должно увеличиваться на один. */
+
+btn = document.querySelector("#clicker");
+// v1
+btn.onclick = function() {
+    let n = +btn.innerText;
+    btn.innerText = ++n;
+}
+
+// v2
+btn.onclick = function() {
+    let n = +this.innerText;
+    this.innerText = ++n;
+}
+
+// v3
+btn.onclick = (e) => {
+    let n = +e.target.innerText;
+    e.target.innerText = ++n;
+}
+
+/* 4.5 В HTML-документе задан тег <button> с идентификатором delete и тег <ul> c идентификатором points и c элементами <li> внутри. Напишите скрипт, который позволяет удалить последний элемент <li> в списке <ul> при нажатии на кнопку. */
+
+btn = document.querySelector("#delete");
+el = document.querySelector("#points");
+let last = [];
+btn.onclick = () => {
+    // el.removeChild(el.lastElementChild);
+    lst = el.lastElementChild;
+    lst.remove();
+    last.push(lst);
+
+}
+btn.oncontextmenu = (e) => {
+    e.preventDefault();
+    if (last.length) {
+        el.append(last.pop());
+    }
+}
