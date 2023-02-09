@@ -399,3 +399,27 @@ img.style.height = "100px";
 // el.append(img);
 
 el.innerHTML = img.outerHTML;
+
+/* 3.6 В HTML-документе задан тег <select> c идентификатором numbers. Напишите скрипт, который добавит внутрь этого тега несколько тегов <option> со значениями от 10 до 550 с шагом 10. Значение у тега <option> должно быть указано внутри и в атрибуте value. */
+
+el = document.querySelector("#numbers");
+let n = 10;
+while (n <= 550) {
+    let opt = document.createElement("option");
+    opt.innerText = n;
+    opt.value = n;
+    el.append(opt);
+    n += 10;
+}
+
+/* 3.7 В HTML-документе задан тег <select>. В скрипте объявлена переменная countries, в которой указаны некоторые страны. Доработайте скрипт так, чтобы в тег <select> добавились теги <option> по одному на каждую страну из массива countries. В качестве значения тега option укажите название страны, а в качестве атрибута — value первые две буквы страны в нижнем регистре (маленькими буквами). */
+
+select = document.querySelector("select");
+const countries = ["Armenia", "Russia", "Germany", "France", "Georgia"];
+
+countries.forEach(c => {
+    let opt = document.createElement("option");
+    opt.value = c.slice(0, 2).toLowerCase();
+    opt.innerText = c;
+    select.appendChild(opt);
+});
