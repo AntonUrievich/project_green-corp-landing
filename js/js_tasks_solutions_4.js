@@ -490,3 +490,62 @@ btn.oncontextmenu = (e) => {
         el.append(last.pop());
     }
 }
+
+/* 4.6 В HTML-документе задан тег <div> c идентификатором square в виде красного квадрата. У него есть атрибут style с указанными высотой и шириной в 100 пикселей. Напишите скрипт, который уменьшает ширину и высоту квадрата на 10% при клике по нему. */
+
+btn = document.querySelector("#square");
+
+btn.onclick = () => {
+    btn.style.width = '90px';
+    btn.style.height = '90px';
+    console.log(btn.style.width);
+    console.log(btn.style.height);
+}
+
+/* 4.7 В HTML-документе задан тег <button> с классом copy. Напишите скрипт, который позволит при нажатии на кнопку <button> создать ее копию и расположить в конце тега body. */
+
+// const btn = document.querySelector(".copy");
+// btn.addEventListener("click", function(e) {
+//     e.stopPropagation();
+//     console.log(e.target);
+//     let clone = e.target.cloneNode(true);
+//     document.body.append(clone);
+// })
+const btn = document.getElementsByClassName("copy");
+for (let i = 0; i < btn.length; i++) {
+    btn[i].addEventListener("click", function(e) {
+        console.log(btn);
+        e.stopPropagation();
+        console.log(e.target);
+        let clone = e.target.cloneNode(true);
+        document.body.append(clone);
+    })
+}
+
+/* 4.8 В HTML-документе есть несколько тегов <p>. Внутри них указаны числа. Напишите скрипт, который позволяет при нажатии на любой параграф увеличить его содержимое на единицу. */
+
+let els = document.querySelectorAll("p");
+els.forEach(el => {
+    el.onclick = function() {
+        //let n = +this.innerText;
+        //el.innerText = ++n;
+        el.innerText = ++this.innerText;
+    }
+});
+
+/* 4.9 В HTML-документе есть два тега <div> с идентификаторами div1 и div2 с элементами <p> внутри. Напишите скрипт, который перемещает тег <p> из одного тега <div> в другой при клике по этому элементу <p>. */
+
+const d1 = document.querySelector("#div1"),
+      d2 = document.querySelector("#div2");
+
+let targets = document.querySelectorAll("#div1>p,#div2>p");
+console.log(targets);
+targets.forEach(el => {
+    el.addEventListener("click", function() {
+        if (el.parentElement === d1) {
+            d2.append(el);
+        } else {
+            d1.append(el);
+        }
+    })
+})
